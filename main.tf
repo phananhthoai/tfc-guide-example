@@ -31,8 +31,8 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "google_compute_instance" "ubuntu" {
-  name         = "ubuntu"
+resource "google_compute_instance" "default" {
+  name         = "my-instance"
   machine_type = "e2-medium"
   zone         = "us-central1-a"
 
