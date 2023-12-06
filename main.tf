@@ -32,8 +32,8 @@ data "aws_ami" "ubuntu" {
 }
 
 data "google_compute_image" "my_image" {
-  family  = "ubuntu-20.04"
-  project = "ubuntu-cloud"
+  family  = "ubuntu-2004-lts"
+  project = "ubuntu-2004-focal-v20231130"
 }
 
 resource "google_compute_instance" "default" {
