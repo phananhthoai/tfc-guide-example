@@ -2,6 +2,14 @@
 # SPDX-License-Identifier: MPL-2.0
 
 terraform {
+  cloud {
+    organization = "Hocdevops"
+
+    workspaces {
+      name = "example"
+    }
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -11,6 +19,11 @@ terraform {
     random = {
       source  = "hashicorp/random"
       version = "3.0.0"
+    }
+
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.0"
     }
   }
 

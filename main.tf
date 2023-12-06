@@ -5,6 +5,9 @@ provider "aws" {
   region = var.region
 }
 
+provider "cloudflare" {
+}
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -28,4 +31,16 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name = var.instance_name
   }
+}
+
+data "cloudflare_zone" "main" {
+  name = var.zone_name
+}
+
+resource "cloudflare_record" "aws" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "aws"
+  value   = aws_instance.ubuntu.public_ip
+  type    = "A"
+  proxied = false
 }

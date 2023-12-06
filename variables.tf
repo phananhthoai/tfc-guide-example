@@ -16,3 +16,7 @@ variable "instance_name" {
   default     = "Provisioned by Terraform"
 }
 
+variable "zone_name" {
+  description = "Zone domain"
+  default     = "hocdevops.me"
+}
