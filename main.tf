@@ -38,7 +38,7 @@ resource "google_compute_instance" "default" {
 
   boot_disk {
     initialize_params {
-      image = "Ubuntu 20.04 LTS"
+      image = "ubuntu_2004_sku"
     }
   }
 
