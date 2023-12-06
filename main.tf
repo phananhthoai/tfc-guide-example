@@ -5,8 +5,15 @@ provider "aws" {
   region = var.region
 }
 
+provider "google" {
+  project = "My First Project"
+  region  = "us-central1"
+  zone    = "us-central1-a"
+}
+
 provider "cloudflare" {
 }
+
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -24,6 +31,29 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+resource "google_compute_instance" "ubuntu" {
+  name         = "ubuntu"
+  machine_type = "e2-medium"
+  zone         = "us-central1-a"
+
+  boot_disk {
+    initialize_params {
+      image = "ubuntu"
+    }
+  }
+
+  scratch_disk {
+    interface = "NVME"
+  }
+
+  network_interface {
+    network = "default"
+
+    access_config {
+    }
+  }
+}
+
 resource "aws_instance" "ubuntu" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
@@ -32,6 +62,7 @@ resource "aws_instance" "ubuntu" {
     Name = var.instance_name
   }
 }
+
 
 data "cloudflare_zone" "main" {
   name = var.zone_name
