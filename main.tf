@@ -31,6 +31,11 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+data "google_compute_image" "my_image" {
+  family  = "ubuntu-20.04"
+  project = "ubuntu-cloud"
+}
+
 resource "google_compute_instance" "default" {
   name         = "my-instance"
   machine_type = "e2-medium"
@@ -38,7 +43,7 @@ resource "google_compute_instance" "default" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu:20.04"
+      image = data.google_compute_image.my_image.self_link
     }
   }
 
