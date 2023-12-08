@@ -38,7 +38,7 @@ data "google_compute_image" "my_image" {
 
 resource "google_compute_instance" "default" {
   name         = "my-instance"
-  machine_type = "e2-medium"
+  machine_type = "n2-standard-2"
   zone         = "us-central1-a"
 
   boot_disk {
