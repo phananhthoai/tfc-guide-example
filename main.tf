@@ -80,3 +80,11 @@ resource "cloudflare_record" "aws" {
   type    = "A"
   proxied = false
 }
+
+resource "cloudflare_record" "google" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "google"
+  value   = google_compute_instance.ubuntu.public_ip
+  type    = "A"
+  proxied = false
+}
