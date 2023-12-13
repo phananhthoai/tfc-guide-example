@@ -75,7 +75,7 @@ data "cloudflare_zone" "main" {
 
 resource "cloudflare_record" "aws" {
   zone_id = data.cloudflare_zone.main.id
-  name    = "aws"
+  name    = "k8s"
   value   = aws_instance.ubuntu.public_ip
   type    = "A"
   proxied = false
@@ -83,7 +83,7 @@ resource "cloudflare_record" "aws" {
 
 resource "cloudflare_record" "google" {
   zone_id = data.cloudflare_zone.main.id
-  name    = "google"
+  name    = "k8s"
   value   = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
   type    = "A"
   proxied = false
