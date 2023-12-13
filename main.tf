@@ -84,7 +84,7 @@ resource "cloudflare_record" "aws" {
 resource "cloudflare_record" "google" {
   zone_id = data.cloudflare_zone.main.id
   name    = "google"
-  value   = google_compute_instance.ubuntu.public_ip
+  value   = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
   type    = "A"
   proxied = false
 }
