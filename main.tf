@@ -5,11 +5,11 @@ provider "aws" {
   region = var.region
 }
 
-provider "google" {
-  project = "automatic-tract-403610"
-  region  = "us-central1"
-  zone    = "us-central1-a"
-}
+#provider "google" {
+#  project = "automatic-tract-403610"
+#  region  = "us-central1"
+#  zone    = "us-central1-a"
+#}
 
 provider "cloudflare" {
 }
@@ -31,33 +31,33 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-data "google_compute_image" "my_image" {
-  family  = "ubuntu-2004-lts"
-  project = "ubuntu-os-cloud"
-}
+#data "google_compute_image" "my_image" {
+#  family  = "ubuntu-2004-lts"
+#  project = "ubuntu-os-cloud"
+#}
 
-resource "google_compute_instance" "default" {
-  name         = "my-instance"
-  machine_type = "n2-standard-2"
-  zone         = "us-central1-a"
+#resource "google_compute_instance" "default" {
+#  name         = "my-instance"
+#  machine_type = "n2-standard-2"
+#  zone         = "us-central1-a"
 
-  boot_disk {
-    initialize_params {
-      image = data.google_compute_image.my_image.self_link
-    }
-  }
+#  boot_disk {
+#    initialize_params {
+#      image = data.google_compute_image.my_image.self_link
+#    }
+#  }
 
-  scratch_disk {
-    interface = "NVME"
-  }
+#  scratch_disk {
+#    interface = "NVME"
+#  }
 
-  network_interface {
-    network = "default"
+#  network_interface {
+#    network = "default"
 
-    access_config {
-    }
-  }
-}
+#    access_config {
+#    }
+#  }
+#}
 
 resource "aws_instance" "ubuntu" {
   ami           = data.aws_ami.ubuntu.id
@@ -81,10 +81,10 @@ resource "cloudflare_record" "aws" {
   proxied = false
 }
 
-resource "cloudflare_record" "google" {
-  zone_id = data.cloudflare_zone.main.id
-  name    = "k8s"
-  value   = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
-  type    = "A"
-  proxied = false
-}
+#resource "cloudflare_record" "google" {
+#  zone_id = data.cloudflare_zone.main.id
+#  name    = "k8s"
+#  value   = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
+#  type    = "A"
+#  proxied = false
+#}
