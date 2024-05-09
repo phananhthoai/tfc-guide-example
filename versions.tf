@@ -3,10 +3,10 @@
 
 terraform {
   cloud {
-    organization = "Hocdevops"
+    organization = "sbu"
 
     workspaces {
-      name = "example"
+      name = "demo"
     }
   }
 
