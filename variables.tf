@@ -20,3 +20,7 @@ variable "zone_name" {
   description = "Zone domain"
   default     = "hocdevops.me"
 }
+
+variable "vpc_id" {
+  default = "vpc-02cbd03248efcd758"
+}

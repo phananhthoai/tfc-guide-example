@@ -60,9 +60,17 @@ data "aws_ami" "ubuntu" {
 #  }
 #}
 
+data "aws_subnets" "vpc_subnets" {
+	filter {
+  	name = "vpc-id"
+  	values = [var.vpc_id]
+  }
+}
+
 resource "aws_instance" "ubuntu" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
+  subnet_id = data.aws_subnets.vpc_subnets.ids[0]
 
   tags = {
     Name = var.instance_name
