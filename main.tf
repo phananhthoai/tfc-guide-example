@@ -77,6 +77,10 @@ resource "aws_instance" "ubuntu" {
   }
 }
 
+resource "aws_eip" "lb" {
+  instance = aws_instance.ubuntu.id
+  domain   = "vpc"
+}
 
 data "cloudflare_zone" "main" {
   name = var.zone_name
@@ -85,7 +89,7 @@ data "cloudflare_zone" "main" {
 resource "cloudflare_record" "aws" {
   zone_id = data.cloudflare_zone.main.id
   name    = "k8s"
-  value   = aws_instance.ubuntu.public_ip
+  value   = aws_eip.lb.public_ip
   type    = "A"
   proxied = false
 }
