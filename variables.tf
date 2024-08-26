@@ -22,5 +22,5 @@ variable "zone_name" {
 }
 
 variable "vpc_id" {
-  default = "vpc-02cbd03248efcd758"
+  default = "vpc-091932e7ff87b028d"
 }
