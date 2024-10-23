@@ -12,7 +12,7 @@ provider "aws" {
 #}
 
 provider "cloudflare" {
-  api_token = "s9HDHruP6ftoWkCn4LE2hPTW9fjvPJahkxbctltH"
+  api_token = "<token>"
 }
 
 
