@@ -80,8 +80,7 @@ resource "aws_vpc_peering_connection_accepter" "accept_peering" {
 resource "aws_route" "target_to_source_route" {
   route_table_id         = var.target_route_table_id
   destination_cidr_block = var.source_vpc_cidr
-  vpc_peering_connection_id = data.terraform_remote_state.source.outputs.peering_connection_id
-  
+  vpc_peering_connection_id = data.terraform_remote_state.source.outputs.peering_connection_id  
 }
 
 
