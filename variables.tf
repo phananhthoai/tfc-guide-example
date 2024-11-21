@@ -7,15 +7,18 @@ variable "region" {
 }
 
 variable "source_vpc_id" {
-  description = "vpc-091932e7ff87b028d"
+  description = "VPC_SOURCE"
+  default = "vpc-091932e7ff87b028d"
 }
 
 variable "target_vpc_id" {
-  description = "vpc-07711d433e633ca39"
+  description = "VPC_TARGET"
+  default = "vpc-07711d433e633ca39"
 }
 
 variable "target_account_id" {
-  description = "774305602364"
+  description = "TARGET_ACCOUNT_IT"
+  default = "774305602364"
 }
 # variable "instance_type" {
 #   description = "Type of EC2 instance to provision"
