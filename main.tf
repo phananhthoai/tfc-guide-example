@@ -10,8 +10,9 @@ provider "aws" {
 #  zone    = "us-central1-a"
 #}
 
-# provider "cloudflare" {  
-# }
+provider "cloudflare" {
+  
+}
 
 
 # data "aws_ami" "ubuntu" {
