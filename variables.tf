@@ -21,6 +21,27 @@ variable "zone_name" {
   default     = "hocdevops.me"
 }
 
-variable "vpc_id" {
+variable "target_vpc_id" {
+  description = "CIDR block for the target VPC"
   default = "vpc-091932e7ff87b028d"
+}
+
+variable "source_vpc_id" {
+  description = "CIDR block for the source VPC"
+  type        = string
+  default     = "10.1.0.0/16"
+  
+}
+
+variable "target_account_id" {
+  description = "AWS Account ID của VPC đích"
+  type        = string
+  default     = "0487-6664-8159"
+}
+
+
+variable "peer_region" {
+  description = "Region của VPC đích"
+  type        = string
+  default     = "ap-southeast-1"
 }
