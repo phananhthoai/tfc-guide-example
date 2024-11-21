@@ -1,10 +1,10 @@
 # # Copyright (c) HashiCorp, Inc.
 # # SPDX-License-Identifier: MPL-2.0
 
-# variable "region" {
-#   description = "AWS region"
-#   default     = "ap-southeast-1"
-# }
+variable "region" {
+  description = "AWS region"
+  default     = "ap-southeast-1"
+}
 
 # variable "instance_type" {
 #   description = "Type of EC2 instance to provision"
@@ -35,10 +35,6 @@
 #   description = "AWS Account ID of the target account"
 #   default = "774305602364"
 # }
-variable "target_region" {
-  description = "AWS region for target account"
-  default     = "ap-southeast-1"
-}
 
 variable "target_route_table_id" {
   description = "Route table ID of the target VPC"
