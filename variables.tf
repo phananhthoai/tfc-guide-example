@@ -13,7 +13,7 @@ variable "source_vpc_id" {
 
 variable "target_vpc_id" {
   description = "VPC_TARGET"
-  default = "vpc-07711d433e633ca39"
+  default = "vpc-0fe88d8a01739b552"
 }
 
 variable "target_account_id" {
