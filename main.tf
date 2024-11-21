@@ -70,10 +70,6 @@ resource "aws_vpc_peering_connection" "source_to_target" {
   }
 }
 
-output "peering_connection_id" {
-  value = aws_vpc_peering_connection.source_to_target.id
-}
-
 
 # resource "aws_instance" "ubuntu" {
 #   ami           = data.aws_ami.ubuntu.id
