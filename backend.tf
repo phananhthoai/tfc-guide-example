@@ -1,6 +1,6 @@
 terraform {
   backend "remote" {
-    organization = "sbu1"
+    organization = "sbu"
 
     workspaces {
       name = "source"
