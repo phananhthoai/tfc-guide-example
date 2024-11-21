@@ -70,6 +70,9 @@ resource "aws_vpc_peering_connection" "source_to_target" {
   }
 }
 
+data "aws_vpc" "source_vpc" {
+  id = var.source_vpc_id  # ID của VPC hiện có
+}
 
 # resource "aws_instance" "ubuntu" {
 #   ami           = data.aws_ami.ubuntu.id

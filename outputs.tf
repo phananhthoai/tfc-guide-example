@@ -14,5 +14,5 @@ output "peering_connection_id" {
 }
 
 output "source_vpc_cidr" {
-  value = aws_vpc.source_vpc.cidr_block
+  value = data.aws_vpc.source_vpc.cidr_block
 }
