@@ -58,26 +58,29 @@ provider "cloudflare" {
 #    }
 #  }
 #}
-
-data "aws_subnets" "vpc_subnets" {
-	filter {
-  	name = "tag:vpc_id"
-  	values = [var.source_vpc_id]
+data "terraform_remote_state" "source" {
+  backend = "remote"
+  config = {
+    organization = "sbu1"
+    workspaces = {
+      name = "target"
+    }
   }
 }
-resource "aws_vpc_peering_connection" "source_to_target" {
-  vpc_id        = var.source_vpc_id  # ID của VPC hiện có trong tài khoản nguồn
-  peer_vpc_id   = var.target_vpc_id  # ID của VPC trong tài khoản đích
-  peer_owner_id = var.target_account_id  # AWS Account ID của tài khoản đích
-  auto_accept   = false  # Tài khoản đích sẽ chấp nhận yêu cầu
+
+resource "aws_vpc_peering_connection_accepter" "accept_peering" {
+  vpc_peering_connection_id = data.terraform_remote_state.source.outputs.peering_connection_id
+  auto_accept               = true
 
   tags = {
-    Name = "Source-to-Target-Peering"
+    Name = "Accept-Source-to-Target"
   }
 }
 
-output "peering_connection_id" {
-  value = aws_vpc_peering_connection.source_to_target.id
+resource "aws_route" "target_to_source_route" {
+  route_table_id         = var.target_route_table_id
+  destination_cidr_block = var.source_vpc_cidr
+  vpc_peering_connection_id = data.terraform_remote_state.source.outputs.peering_connection_id
 }
 
 
