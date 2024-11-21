@@ -9,3 +9,10 @@
 #   value = aws_instance.ubuntu.arn
 # }
 
+output "peering_connection_id" {
+  value = aws_vpc_peering_connection.source_to_target.id
+}
+
+output "source_vpc_cidr" {
+  value = aws_vpc.source_vpc.cidr_block
+}
