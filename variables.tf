@@ -40,7 +40,6 @@ variable "target_route_table_id" {
   description = "Route table ID of the target VPC"
   default = "rtb-07e9b8393b85c5337"
 }
-
 variable "source_vpc_cidr" {
   description = "CIDR block of the source VPC"
   default = "172.31.0.0/16"

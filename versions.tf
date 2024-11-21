@@ -2,13 +2,13 @@
 # SPDX-License-Identifier: MPL-2.0
 
 terraform {
-  # cloud {
-  #   organization = "sbu"
+  cloud {
+    organization = "sbu"
 
-  #   workspaces {
-  #     name = "target"
-  #   }
-  # }
+    workspaces {
+      name = "target"
+    }
+  }
 
   required_providers {
     aws = {
