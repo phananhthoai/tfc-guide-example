@@ -83,7 +83,8 @@ output "peering_connection_id" {
 resource "aws_instance" "ubuntu" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  subnet_id = data.aws_subnets.vpc_subnets.id
+  subnet_id = data.aws_subnets.vpc_subnets.id'
+  instance_type = t2.micro
 
   tags = {
     Name = var.instance_name
