@@ -10,8 +10,7 @@ provider "aws" {
 #  zone    = "us-central1-a"
 #}
 
-provider "cloudflare" {
-  api_token = "<token>"
+provider "cloudflare" {  
 }
 
 
