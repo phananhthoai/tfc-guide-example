@@ -6,7 +6,7 @@ terraform {
     organization = "sbu"
 
     workspaces {
-      name = "demo"
+      name = "target"
     }
   }
 

@@ -61,7 +61,7 @@ provider "cloudflare" {
 data "terraform_remote_state" "source" {
   backend = "remote"
   config = {
-    organization = "sbu1"
+    organization = "sbu"
     workspaces = {
       name = "target"
     }
