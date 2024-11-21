@@ -68,7 +68,6 @@ data "terraform_remote_state" "source" {
   }
 }
 
-
 resource "aws_vpc_peering_connection_accepter" "accept_peering" {
   vpc_peering_connection_id = data.terraform_remote_state.source.outputs.peering_connection_id
   auto_accept               = true
